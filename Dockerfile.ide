@@ -1,10 +1,3 @@
-# Tip: `/bin/sh -c <command>`for ENTRYPOINT
-
-# Tip: Use multi-stage build to create distributables and copy to next stage.
-
-# Notes:
-# - Theia is using Debian Bullseye for their Docker Image.
-
 FROM ghcr.io/eclipse-theia/theia-blueprint/theia-ide:1.51.0
 
 USER root
