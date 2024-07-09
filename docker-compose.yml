@@ -1,0 +1,39 @@
+
+volumes:
+  theia_py_project_root:
+  mongodb_volume:
+
+networks:
+  theia_py_net:
+
+services:
+  ide:
+    image: theia_py_ide
+    build:
+      context: .
+      dockerfile: Dockerfile.ide
+    container_name: ide_container
+    hostname: ide-container-host
+    networks:
+      - theia_py_net
+    ports:
+      - 127.0.0.1:3000:3000
+      - 127.0.0.1:8888:80
+    expose: ["22", "21", "27017", "27018"]
+    volumes:
+      - theia_py_project_root:/root/project
+      - mongodb_volume:/root/project/data/db
+
+  db:
+    image: mongo:4.4.17-focal
+    container_name: ide_db_container
+    hostname: db-container-host
+    networks:
+      - theia_py_net
+    # ports:
+    #   - 127.0.0.1:27017:27017
+    expose: ["27017", "27018", "22", "21"]
+    env_file:
+      - .env
+    volumes:
+      - mongodb_volume:/data/db
