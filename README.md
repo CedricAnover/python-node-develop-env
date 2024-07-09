@@ -1,23 +1,29 @@
+# My Personal Development Environment for Python and Node JS
 
-## Commands
+## Features
+
+- Docker Compose Development Environment
+- [Theia](https://theia-ide.org/) IDE
+- Pyenv and Poetry
+- Node JS
+- MongoDB
+
+---
+
+## Docker Compose Ad-hoc and Lifecycle Management Commands
 ```bash
-# Live
-docker compose up -d --build --force-recreate
-docker compose up --force-recreate
-# Test
+docker compose up --force-recreate                 # No Build
+docker compose up -d --build --force-recreate      # Run in Background
 docker compose up --build --force-recreate
 
-# Test
-docker compose down -v
-# Live
+docker compose down -v                             # Used for Testing Only
 docker compose down
 
-# Start
-docker compose start
-
-# Stop
-docker compose stop
+docker compose start                               # Start
+docker compose stop                                # Stop
 ```
+
+---
 
 ## Links
 - [Theia IDE](http://127.0.0.1:3000)
