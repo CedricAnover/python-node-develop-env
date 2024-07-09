@@ -12,6 +12,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.ide
+      args:
+        - GIT_USER=${GH_USERNAME}
+        - GIT_EMAIL=${GH_EMAIL}
+    env_file:
+      - .env.theia
     container_name: ide_container
     hostname: ide-container-host
     networks:
@@ -34,6 +39,6 @@ services:
     #   - 127.0.0.1:27017:27017
     expose: ["27017", "27018", "22", "21"]
     env_file:
-      - .env
+      - .env.mongodb
     volumes:
       - mongodb_volume:/data/db

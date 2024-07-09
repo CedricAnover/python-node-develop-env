@@ -1,5 +1,8 @@
 FROM ghcr.io/eclipse-theia/theia-blueprint/theia-ide:1.51.0
 
+ARG GIT_USER
+ARG GIT_EMAIL
+
 USER root
 
 ENV PROJ_ROOT=/root/project
@@ -39,8 +42,8 @@ RUN poetry config virtualenvs.in-project true
 # Reference: https://dev.to/mattcale/pyenv-poetry-bffs-20k6
 
 # Configure Git
-RUN git config --global user.name "CedricAnover"
-RUN git config --global user.email "cedric.anover@hotmail.com"
+RUN git config --global user.name "${GIT_USER}"
+RUN git config --global user.email "${GIT_EMAIL}"
 RUN git config --global init.defaultBranch main
 
 
